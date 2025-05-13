@@ -19,7 +19,7 @@ with open(input_file, 'r') as infile, \
     point_writer = csv.writer(point_out)
 
     traj_writer.writerow(['id', 'taxi_id', 'trajectory_date'])
-    point_writer.writerow(['id', 'trajectory_id', 'lat', 'lon', 'timestamp'])
+    point_writer.writerow(['id', 'trajectory_id', 'lon', 'lat', 'timestamp'])
 
     for row in reader:
         if trajectory_id > max_trajectories:
@@ -38,8 +38,8 @@ with open(input_file, 'r') as infile, \
         current_time = datetime.utcfromtimestamp(ts)
 
         for p in points:
-            lat, lon = p
-            point_writer.writerow([point_id, trajectory_id, lat, lon, current_time])
+            lon, lat = p
+            point_writer.writerow([point_id, trajectory_id, lon, lat, current_time])
             point_id += 1
             current_time += timedelta(seconds=15)
 

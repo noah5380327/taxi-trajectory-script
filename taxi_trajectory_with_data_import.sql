@@ -27,8 +27,8 @@ DROP TABLE IF EXISTS temp_points;
 CREATE TEMP TABLE temp_points (
     id INTEGER,
     trajectory_id INTEGER,
-    lat DOUBLE PRECISION,
     lon DOUBLE PRECISION,
+    lat DOUBLE PRECISION,
     timestamp TIMESTAMP
 );
 
@@ -41,7 +41,7 @@ FROM '/absolute/path/to/trajectories_sample.csv'
 DELIMITER ',' CSV HEADER;
 
 -- Import raw point data into temporary table
-COPY temp_points(id, trajectory_id, lat, lon, timestamp)
+COPY temp_points(id, trajectory_id, lon, lat, timestamp)
 FROM '/absolute/path/to/trajectory_points_sample.csv'
 DELIMITER ',' CSV HEADER;
 
