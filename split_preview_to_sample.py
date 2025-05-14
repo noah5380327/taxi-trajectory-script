@@ -2,11 +2,10 @@ import csv
 import ast
 from datetime import datetime, timedelta
 
-input_file = 'preview.csv'
+input_file = 'train.csv'
 output_traj = 'trajectories_sample.csv'
 output_points = 'trajectory_points_sample.csv'
 
-max_trajectories = 50
 trajectory_id = 1
 point_id = 1
 
@@ -22,9 +21,6 @@ with open(input_file, 'r') as infile, \
     point_writer.writerow(['id', 'trajectory_id', 'lon', 'lat', 'timestamp'])
 
     for row in reader:
-        if trajectory_id > max_trajectories:
-            break
-
         taxi_id = row['TAXI_ID']
         ts = int(row['TIMESTAMP'])
         points = ast.literal_eval(row['POLYLINE'])
